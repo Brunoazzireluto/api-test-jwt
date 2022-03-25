@@ -1,0 +1,9 @@
+{
+    "apiKey": "AIzaSyDvi8kedlFuarzsKmcXjUm8eAw3Rf2Fu1o",
+    "authDomain": "flask-fire-auth.firebaseapp.com",
+    "projectId": "flask-fire-auth",
+    "storageBucket": "flask-fire-auth.appspot.com",
+    "messagingSenderId": "65227421521",
+    "appId":"1:65227421521:web:fdd05714ead8866e3ac570",
+    "databaseURL": ""
+}

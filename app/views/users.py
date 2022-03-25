@@ -2,6 +2,7 @@ from app import db
 from flask import request, jsonify
 from werkzeug.security import generate_password_hash
 from ..models.users import Users, user_schema, users_schema
+from firebase_admin import auth
 
 
 class UsersClass():
@@ -11,10 +12,12 @@ class UsersClass():
         password = generate_password_hash(request.json['password'])
         name = request.json['name']
         email = request.json['email']
-        user = Users(username=username, password=password, name=name, email=email)
+        # user = Users(username=username, password=password, name=name, email=email)
+        user = auth.create_user(email = email, password=password)
         try:
-            db.session.add(user)
-            db.session.commit()
+            # db.session.add(user)
+            # db.session.commit()
+            
             result = user_schema.dump(user)
             return jsonify({'Message':'Successfuly registred', 'data':result}), 201
         except:

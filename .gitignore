@@ -6,3 +6,5 @@ config.py
 /app/__pycache__
 __pycache__/
 /__pycache__
+
+fire_admin.json

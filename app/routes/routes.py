@@ -1,4 +1,3 @@
-from crypt import methods
 from app import app 
 from flask import jsonify
 from ..views.helper import Auth
@@ -22,8 +21,7 @@ def get_users(current_user):
     return UsersClass.get_users()
 
 @app.route('/users', methods=['POST'])
-@Auth.token_required
-def post_user(current_user):
+def post_user():
     return UsersClass.post_user()
 
 @app.route('/users/<int:id>', methods=['PUT'])
