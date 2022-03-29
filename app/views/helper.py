@@ -5,6 +5,7 @@ from flask import request, jsonify
 from functools import wraps
 from .users import UsersClass
 from app import app
+from app import pb
 
 class Auth():
 
@@ -18,9 +19,9 @@ class Auth():
         if not user:
             return jsonify({'Message':'User not found', 'data':'{}'}), 401
 
-        if user and check_password_hash(user.password, auth.password):
+        if user and pb.auth().sign_in_with_email_and_password(auth.username, auth.password):
             token = jwt.encode({
-                'username':user.username, 
+                'username':user.uid,
                 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
             }, app.config['SECRET_KEY'])
             return jsonify({
